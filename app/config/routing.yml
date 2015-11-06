@@ -7,7 +7,7 @@ application_sonata_user:
     prefix:   /
 
 app:
-    resource: "@MusicBundle/Resources/config/routing.yml"
+    resource: "@BuffaloBundle/Resources/config/routing.yml"
     type:     yaml
 
 fos_user_security:

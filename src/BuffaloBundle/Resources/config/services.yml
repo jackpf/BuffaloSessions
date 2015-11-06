@@ -1,0 +1,4 @@
+services:
+#    buffalo.example:
+#        class: BuffaloBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
