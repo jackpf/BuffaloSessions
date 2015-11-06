@@ -1,7 +1,7 @@
 set :application, "Buffalo Sessions"
 set :domain,      "buffalo-sessions.com"
 set :user,        "jack"
-set :deploy_to,   "/home/#{user}/websites/#{domain}"
+set :deploy_to,   "/var/www/#{domain}"
 set :app_path,    "app"
 
 set :repository,  "https://github.com/jackpf/BuffaloSessions.git"
