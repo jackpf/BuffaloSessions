@@ -1,5 +1,5 @@
-set :application, "Regulation17"
-set :domain,      "regulation17.com"
+set :application, "Buffalo Sessions"
+set :domain,      "buffalo-sessions.com"
 set :user,        "jack"
 set :deploy_to,   "/home/#{user}/websites/#{domain}"
 set :app_path,    "app"
