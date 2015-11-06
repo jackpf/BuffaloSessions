@@ -4,7 +4,7 @@ set :user,        "jack"
 set :deploy_to,   "/home/#{user}/websites/#{domain}"
 set :app_path,    "app"
 
-set :repository,  "https://github.com/jackpf/Regulation17.git"
+set :repository,  "https://github.com/jackpf/BuffaloSessions.git"
 set :scm,         :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `subversion`, `mercurial`, `perforce`, or `none`
 
