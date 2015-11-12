@@ -38,6 +38,12 @@ class VideoCastAdmin extends MediaAdmin
     {
         parent::preUpdate($object);
 
+        // Delete?
+        if ($this->getRequest()->request->get($this->getUniqid())['videoFile']['_delete']) {
+            $this->em->remove($object->getVideoFile());
+            $this->em->flush();
+        }
+
         // Make sure life cycle events are triggered
         if ($file = $object->getVideoFile()) {
             $file->setUpdatedAt(new \DateTime());

@@ -10,6 +10,7 @@
             <cascade>
                 <cascade-all/>
             </cascade>
+            <join-column on-delete="SET NULL" />
         </one-to-one>
     </entity>
 </doctrine-mapping>

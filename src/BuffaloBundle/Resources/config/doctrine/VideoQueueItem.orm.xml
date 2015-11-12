@@ -10,7 +10,9 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
-        <one-to-one field="file" target-entity="BuffaloBundle\Entity\MediaFile"></one-to-one>
+        <one-to-one field="file" target-entity="BuffaloBundle\Entity\MediaFile">
+            <join-column on-delete="CASCADE" />
+        </one-to-one>
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
