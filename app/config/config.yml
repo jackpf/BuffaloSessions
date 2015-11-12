@@ -43,7 +43,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ MusicBundle, BuffaloBundle ]
+    bundles:        [ BuffaloBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -138,22 +138,6 @@ security:
 sonata_admin:
     title:      Regluation XVII Admin
     title_logo: bundles/music/images/logo.png
-
-payum:
-    security:
-        token_storage:
-            MusicBundle\Entity\PaymentToken: { doctrine: orm }
-
-    storages:
-        MusicBundle\Entity\Order: { doctrine: orm }
-
-    gateways:
-        paypal:
-            paypal_express_checkout_nvp:
-                username:  %paypal_username%
-                password:  %paypal_password%
-                signature: %paypal_signature%
-                sandbox:   %paypal_sandbox%
 
 liip_imagine:
     resolvers:

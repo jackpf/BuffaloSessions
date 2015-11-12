@@ -5,53 +5,29 @@
         <service id="sonata.admin.news" class="Application\Sonata\AdminBundle\Admin\NewsAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Content" label="News Items"/>
             <argument />
-            <argument>MusicBundle\Entity\NewsItem</argument>
-            <argument />
-        </service>
-        <service id="sonata.admin.release" class="Application\Sonata\AdminBundle\Admin\ReleaseAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Release Items"/>
-            <argument />
-            <argument>MusicBundle\Entity\ReleaseItem</argument>
-            <argument />
-            <call method="setEntityManager">
-                <argument type="service" id="doctrine.orm.entity_manager" />
-            </call>
-        </service>
-        <service id="sonata.admin.mix" class="Application\Sonata\AdminBundle\Admin\MixAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Content" label="Mix Items"/>
-            <argument />
-            <argument>MusicBundle\Entity\MixItem</argument>
-            <argument />
-        </service>
-        <service id="sonata.admin.media_file" class="Application\Sonata\AdminBundle\Admin\MediaFileAdmin">
-            <tag name="sonata.admin" manager_type="orm" label="Media Files" show_in_dashboard="false"/>
-            <argument />
-            <argument>MusicBundle\Entity\MediaFile</argument>
+            <argument>BuffaloBundle\Entity\NewsItem</argument>
             <argument />
         </service>
         <service id="sonata.admin.news_category" class="Application\Sonata\AdminBundle\Admin\NewsCategoryAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Content" label="News Categories"/>
             <argument />
-            <argument>MusicBundle\Entity\NewsCategory</argument>
+            <argument>BuffaloBundle\Entity\NewsCategory</argument>
             <argument />
         </service>
-        <service id="sonata.admin.media_variant" class="Application\Sonata\AdminBundle\Admin\ReleaseVariantAdmin">
-            <tag name="sonata.admin" manager_type="orm" label="Media Variants" show_in_dashboard="false"/>
+        <service id="sonata.admin.media_file" class="Application\Sonata\AdminBundle\Admin\MediaFileAdmin">
+            <tag name="sonata.admin" manager_type="orm" label="Media Files" show_in_dashboard="false"/>
             <argument />
-            <argument>MusicBundle\Entity\ReleaseVariant</argument>
-            <argument />
-        </service>
-        <service id="sonata.admin.release_type" class="Application\Sonata\AdminBundle\Admin\ReleaseTypeAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Configuration" label="Release Types"/>
-            <argument />
-            <argument>MusicBundle\Entity\ReleaseType</argument>
+            <argument>BuffaloBundle\Entity\MediaFile</argument>
             <argument />
         </service>
-        <service id="sonata.admin.order" class="Application\Sonata\AdminBundle\Admin\OrderAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Orders" label="Orders"/>
+        <service id="sonata.admin.video_cast" class="Application\Sonata\AdminBundle\Admin\VideoCastAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Content" label="Video Casts"/>
             <argument />
-            <argument>MusicBundle\Entity\Order</argument>
-            <argument>ApplicationSonataAdminBundle:OrderAdmin</argument>
+            <argument>BuffaloBundle\Entity\VideoCastItem</argument>
+            <argument />
+            <call method="setEntityManager">
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </call>
         </service>
 
         <service id="sonata.kernel_listener" class="Application\Sonata\AdminBundle\EventListener\KernelListener">

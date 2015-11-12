@@ -13,8 +13,8 @@ class MediaFileAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            //->add('file', 'file')
-            ->add('losslessFile', 'file')
+            ->add('audioFile', 'file')
+            ->add('videoFile', 'file')
         ;
     }
 }

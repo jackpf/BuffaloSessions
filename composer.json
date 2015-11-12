@@ -28,7 +28,6 @@
         "sonata-project/user-bundle": "^2.2",
         "payum/payum-bundle": "^0.15.0",
         "payum/offline": "^0.15.1",
-        "payum/paypal-express-checkout-nvp": "^0.15.1",
         "jms/security-extra-bundle": "dev-master",
         "gregwar/image-bundle": "dev-master",
         "liip/imagine-bundle": "^1.3"
