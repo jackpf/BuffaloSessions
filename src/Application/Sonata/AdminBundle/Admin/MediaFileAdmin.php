@@ -15,6 +15,7 @@ class MediaFileAdmin extends Admin
             ->add('name')
             ->add('audioFile', 'file')
             ->add('videoFile', 'file')
+            ->add('audioDelay')
         ;
     }
 }

@@ -14,13 +14,14 @@
         <field name="name" />
         <field name="audioPath" column="audio_path" />
         <field name="videoPath" column="video_path" />
-        <field name="processedPath" column="processed_path" />
+        <field name="processedPath" column="processed_path" nullable="true" />
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
         <field name="updatedAt" column="updated_at" type="datetime">
             <gedmo:timestampable on="update"/>
         </field>
+        <field name="audioDelay" column="audio_delay" type="float" nullable="true" />
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="lifecycleFileUpload"/>

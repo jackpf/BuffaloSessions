@@ -8,6 +8,10 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BuffaloBundle:Default:index.html.twig');
+        $videos = $this->getDoctrine()->getManager()
+            ->getRepository('BuffaloBundle:MediaFile')
+            ->findAll();
+
+        return $this->render('BuffaloBundle:Buffalo:index.html.twig', ['videos' => $videos]);
     }
 }

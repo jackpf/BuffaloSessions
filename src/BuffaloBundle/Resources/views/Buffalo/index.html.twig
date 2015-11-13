@@ -1,0 +1,9 @@
+{% extends 'BuffaloBundle:Buffalo:base.html.twig' %}
+
+{% block content %}
+    {% for video in videos %}
+        <video width="320" height="240" controls>
+            <source src="/uploads/{{ video.processedPath }}" type="video/mp4">
+        </video>
+    {% endfor %}
+{% endblock %}

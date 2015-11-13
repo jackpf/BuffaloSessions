@@ -2,6 +2,7 @@
 
 namespace BuffaloBundle\Command;
 
+use BuffaloBundle\Entity\VideoQueueItem;
 use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -27,8 +28,10 @@ class ProcessVideoCommand extends ContainerAwareCommand
             $queueItem = $em->getRepository('BuffaloBundle:VideoQueueItem')
                 ->createQueryBuilder('i')
                 ->select('i')
+                ->where('i.state = :unprocessed')
                 ->orderBy('i.createdAt', 'ASC')
                 ->setMaxResults(1)
+                ->setParameter('unprocessed', VideoQueueItem::STATE_UNPROCESSED)
                 ->getQuery()->getSingleResult();
         } catch (NoResultException $e) {
             $output->writeln('No items in queue');
@@ -38,10 +41,15 @@ class ProcessVideoCommand extends ContainerAwareCommand
         $processor = $this->getContainer()->get('buffalo.video_processor');
         $result = $processor->process($queueItem->getFile());
 
+        $queueItem->setResult($result);
+
         if ($result == 0) {
-            $em->remove($queueItem);
-            $em->flush();
+            $queueItem->setState(VideoQueueItem::STATE_PROCESSED);
+        } else {
+            $queueItem->setState(VideoQueueItem::STATE_UNPROCESSED);
         }
+
+        $em->flush();
 
         $output->writeln('Finished with result: ' . $result);
     }

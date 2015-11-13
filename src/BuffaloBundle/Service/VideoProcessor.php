@@ -19,19 +19,19 @@ class VideoProcessor extends Processor
     {
         $audioPath = $file->getAudioPath();
         $videoPath = $file->getVideoPath();
-        $processedPath = DownloadManager::createPath($videoPath);
-die(var_dump(sprintf(
-    'ffmpeg -i %s -i %s -shortest -strict -2 %s',
-    Data::getUploadPath() . '/' . $audioPath,
-    Data::getUploadPath() . '/' . $videoPath,
-    Data::getUploadPath() . '/' . $processedPath
-)));
+        $processedPath = DownloadManager::createPath($videoPath, 'mp4');
+
         $result = self::run(sprintf(
-            'ffmpeg -i %s -i %s -shortest -strict -2 %s',
+            'ffmpeg -itsoffset %f -i %s -i %s -strict -2 %s -c:v libx264 -preset ultrafast -crf 23 -y',
+            (float) $file->getAudioDelay(),
             Data::getUploadPath() . '/' . $audioPath,
             Data::getUploadPath() . '/' . $videoPath,
             Data::getUploadPath() . '/' . $processedPath
         ));
+
+        if ($file->getProcessedPath() != null) {
+            $file->delete($file->getProcessedPath());
+        }
 
         $file->setProcessedPath($processedPath);
         $this->em->flush();

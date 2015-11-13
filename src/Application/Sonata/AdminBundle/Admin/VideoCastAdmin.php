@@ -39,7 +39,8 @@ class VideoCastAdmin extends MediaAdmin
         parent::preUpdate($object);
 
         // Delete?
-        if ($this->getRequest()->request->get($this->getUniqid())['videoFile']['_delete']) {
+        $fileData = $this->getRequest()->request->get($this->getUniqid())['videoFile'];
+        if (isset($fileData['_delete']) && $fileData['_delete'] && $object->getVideoFile()) {
             $this->em->remove($object->getVideoFile());
             $this->em->flush();
         }

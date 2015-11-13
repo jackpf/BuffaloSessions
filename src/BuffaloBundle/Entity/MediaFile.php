@@ -28,6 +28,8 @@ class MediaFile
 
     private $updatedAt;
 
+    private $audioDelay;
+
     /**
      * @return mixed
      */
@@ -180,6 +182,22 @@ class MediaFile
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAudioDelay()
+    {
+        return $this->audioDelay;
+    }
+
+    /**
+     * @param mixed $audioDelay
+     */
+    public function setAudioDelay($audioDelay)
+    {
+        $this->audioDelay = $audioDelay;
+    }
+
     public function lifecycleFileUpload()
     {
         if ($this->getAudioFile()) {
@@ -213,7 +231,7 @@ class MediaFile
         $this->delete($this->getVideoPath());
     }
 
-    protected function delete($filename)
+    public function delete($filename)
     {
         $path = Data::getUploadPath() . '/' . $filename;
 

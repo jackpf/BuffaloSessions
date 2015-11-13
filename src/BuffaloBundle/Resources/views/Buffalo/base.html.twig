@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% stylesheets '@BuffaloBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <title>Buffalo Sessions {% block title %}{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+
+    <style>
+        /** Globals **/
+        * {
+            font-family: monospace;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        ul, li {
+            list-style: none;
+        }
+        h1, h2, h3 {
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: #262626;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            height: 100px;
+        }
+        .header-nav {
+            font-size: 1.5em;
+            padding-top: 10px;
+        }
+        .logo-img {
+            width: 84px;
+            height: 84px;
+        }
+        .container-fluid {
+            min-height: 100%;
+            padding: 0;
+        }
+        .body {
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <ul class="list-inline header">
+        <li class="logo col-xs-3">
+            <img class="logo-img" src="{{ asset('/bundles/buffalo/img/buffalo.png') }}"
+        </li>
+        <li class="header-nav col-xs-9">
+            <ul class="list-inline">
+                <li class="col-xs-3">Home</li>
+                <li class="col-xs-3">Blog</li>
+                <li class="col-xs-3">Video Casts</li>
+                <li class="col-xs-3">Bookings</li>
+            </ul>
+        </li>
+    </ul>
+    <br clear="both" /><br clear="both" />
+    <div class="body">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+{% block javascripts %}
+    {% javascripts '@BuffaloBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block javascript %}{% endblock %}
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-67566832-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
