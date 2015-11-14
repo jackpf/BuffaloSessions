@@ -70,16 +70,18 @@ class VideoCastAdmin extends MediaAdmin
         $file = $object->getVideoFile();
 
         if ($file->getAudioFile() || $file->getVideoFile()) {
-            $existingQueueItem = $this->em->getRepository('BuffaloBundle:VideoQueueItem')
-                ->findByFile($file);
+            $videoQueueItem = $this->em->getRepository('BuffaloBundle:VideoQueueItem')
+                ->findBy(['file' => $file, 'state' => VideoQueueItem::STATE_UNPROCESSED]);
 
-            if (!$existingQueueItem) {
+            if (!$videoQueueItem) {
                 $videoQueueItem = new VideoQueueItem();
                 $videoQueueItem->setFile($file);
                 $this->em->persist($videoQueueItem);
-
-                $this->em->flush();
             }
+
+            $videoQueueItem->setState(VideoQueueItem::STATE_UNPROCESSED);
+
+            $this->em->flush();
         }
     }
 }

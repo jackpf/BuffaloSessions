@@ -18,9 +18,5 @@
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
-
-        <unique-constraints>
-            <unique-constraint columns="file_id"/>
-        </unique-constraints>
     </entity>
 </doctrine-mapping>
