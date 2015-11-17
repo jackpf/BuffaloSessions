@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="BuffaloBundle\Entity\MediaItem">
+        <property name="title">
+            <constraint name="NotBlank" />
+            <constraint name="Length">
+                <option name="max">20</option>
+            </constraint>
+        </property>
+        <property name="shortContent">
+            <constraint name="NotBlank" />
+            <constraint name="Length">
+                <option name="max">255</option>
+            </constraint>
+        </property>
+        <property name="content">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="imageFile">
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>image/jpeg</value>
+                    <value>image/png</value>
+                </option>
+                <option name="mimeTypesMessage">Please upload a valid image.</option>
+            </constraint>
+        </property>
+        <property name="backgroundFile">
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>image/jpeg</value>
+                    <value>image/png</value>
+                </option>
+                <option name="mimeTypesMessage">Please upload a valid image.</option>
+            </constraint>
+        </property>
+    </class>
+    <class name="BuffaloBundle\Entity\MediaFile">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="audioFile">
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>audio/wav</value>
+                    <value>audio/x-wav</value>
+                </option>
+                <option name="mimeTypesMessage">Please upload a valid WAV file.</option>
+            </constraint>
+        </property>
+        <!--<property name="videoFile">
+            <constraint name="File">
+                <option name="mimeTypes">
+                    <value>video/h264</value>
+                    <value>video/mp4</value>
+                </option>
+                <option name="mimeTypesMessage">Please upload a valid H264 encoded file.</option>
+            </constraint>
+        </property>-->
+        <!--<constraint name="MusicBundle\Validation\FileRequiredConstraint">
+            <option name="file">
+                <value>file</value>
+            </option>
+            <option name="path">
+                <value>path</value>
+            </option>
+        </constraint>
+        <constraint name="MusicBundle\Validation\FileRequiredConstraint">
+            <option name="file">
+                <value>losslessFile</value>
+            </option>
+            <option name="path">
+                <value>losslessPath</value>
+            </option>
+        </constraint>-->
+    </class>
+    <class name="BuffaloBundle\Entity\NewsCategory">
+        <property name="title">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+</constraint-mapping>
